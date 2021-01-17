@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chiamata ascincrona</title>
+</head>
+<body>
+<h1>Richiesta asincrona</h1>
+<button id="btn" onclick="caricaFile()">Clicca qui per vedere il testo</button>
+<p id="display">Al posto di questo paragrafo</p>
+
+<button id="btn" onclick="caricaFile2()">Clicca qui per vedere l'immagine</button>
+<p id="display2">Al posto di questa stringa</p>
+
+<script>
+    //Ajax: Asynchronous Javascript And XML
+
+    // Chiamata asincrona al file di testo
+    function caricaFile() {
+        const richiesta = new XMLHttpRequest();
+        richiesta.open('GET', 'testorisposta.txt', true);
+        richiesta.send();
+
+        richiesta.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200) {
+                document.getElementById('display').innerHTML = this.responseText;
+            }
+        }
+    }
+
+    // Chiamata asincrona immagine
+    function caricaFile2() {
+        const richiesta2 = new XMLHttpRequest();
+        richiesta2.open('GET', 'img/immagine.jpg', true);
+        richiesta2.send();
+
+        richiesta2.onreadystatechange = function() {
+            if(this.readyState === 4 && this.status === 200) {
+                document.getElementById('display2').innerHTML = "<img src='img/immagine.jpg'>";
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

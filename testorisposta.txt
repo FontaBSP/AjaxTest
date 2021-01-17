@@ -1,0 +1,1 @@
+Testo di prova, se si vede nel browser significa che la chiamata asincrona funziona!
